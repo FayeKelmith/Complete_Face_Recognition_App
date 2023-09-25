@@ -6,11 +6,11 @@ st.set_page_config(
 )
 
 
-st.title("Works 🎄")
+st.title("Face Recognition 🎄")
 
 st.divider()
 
-st.sidebar.success("Select Task")
+st.sidebar.success("Select A Task")
 st.subheader("You can either test our model or feed in data for a new person")
 
 
