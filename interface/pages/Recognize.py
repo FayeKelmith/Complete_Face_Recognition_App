@@ -1,15 +1,24 @@
 import streamlit as st 
-
+from PIL import Image
 st.set_page_config(
     page_title="Recognition",
     page_icon="👁️‍🗨️"
 )
 
-st.title("Please take a snapshot and we'll recognize who it is.")
+st.subheader("Please take a snapshot and we'll recognize who it is.")
 
 st.sidebar.success("Recognition")
 
-st.session_state.key = st.camera_input('pic',key='pic')
+st.divider()
 
-if 'key' in st.session_state:
-    st.write(st.session_state.pic)
+image = st.camera_input("smile")
+
+if 'pic' not in st.session_state:
+    st.session_state.pic = []
+
+if image is not None:
+    st.session_state.pic = Image.open(image)
+
+#image to run on model:
+
+
