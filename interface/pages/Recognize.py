@@ -20,5 +20,5 @@ if image is not None:
     st.session_state.pic = Image.open(image)
 
 #image to run on model:
-
+image_for_recognition = image
 

@@ -61,17 +61,22 @@ while( (not st.session_state.stop) and (len(st.session_state.gallery) < number_o
         #final_pic = np.array(pic)
         
         st.session_state.gallery.append(pic)
-    
+
+
+#incase the limit is attained, it should default to true.
+st.session_state.stop = True 
+
 st.info(f"{len(st.session_state.gallery)} Pictures Taken!")
 #Get the pictures and upload send them to data set
 image_gallery = st.session_state.gallery
 
+
+#NOTE: I will import this state in my api and then use it to create a folder once the person is done uploading images.   
+done = st.session_state.stop
+    
+#============IF USEFULL=================
+
 #NOTE: To display the taken picture.
 # for image in image_gallery:
 #     st.image(image,caption="Pic")
-    
-    
-    
-
-
 
