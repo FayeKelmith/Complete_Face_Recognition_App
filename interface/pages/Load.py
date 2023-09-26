@@ -13,7 +13,6 @@ st.sidebar.success("Load your images")
 
 st.info("Who do you wish to add to the dataset?")
 
-#NOTE: To be exported and used as label for folder in dataset.
 name = st.text_input("Name: ",key='name')
 
 if name:
@@ -30,8 +29,7 @@ st.subheader("Please add 20 photos of thesame person, with different perspective
 #    PICTURES
 #==========================
 
-#FIXME: to modify number_of_images to 20
-number_of_images  = 5 
+number_of_images  = 20 
 
 
 # Initializing session to store images
@@ -58,7 +56,6 @@ while( (not st.session_state.stop) and (len(st.session_state.gallery) < number_o
         #converting to PIL image
         pic = Image.open(image)
         
-        #INFO: converting to numpy array
         #final_pic = np.array(pic)
         
         st.session_state.gallery.append(pic)
@@ -77,12 +74,11 @@ done = st.session_state.stop
 if done:
     #make new path
     dataset = "../../dataset"
+   
     new_path = os.path.join(dataset,name)
-    #BUG: to fix \\
-    new_path = r'{new_path}'
-    #make the new directory
-    if not os.path.exists(new_path):
-        os.mkdir(new_path)
+    
+    #FIXME:
+    os.makedirs(new_path)
     
     #navigate to the new path
     os.chdir(new_path)
@@ -97,7 +93,7 @@ if done:
 
 
 
-#============IF USEFULL=================
+
 
 #NOTE: To display the taken picture.
 # for image in image_gallery:
