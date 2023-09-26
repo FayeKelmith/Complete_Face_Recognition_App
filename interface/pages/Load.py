@@ -73,19 +73,24 @@ done = st.session_state.stop
 #=========FOLDER CREATION======
 if done:
     #make new path
-    dataset = "../../dataset"
+    dataset = "./dataset"
    
     new_path = os.path.join(dataset,name)
     
+    #to save current path and reuse
+    current_path = os.getcwd()
+    
     #FIXME:
-    os.makedirs(new_path)
+    os.makedirs(new_path,exist_ok=True)
     
     #navigate to the new path
     os.chdir(new_path)
-    
         #populate the new directory with images
     for ind in range(len(image_gallery)):
         image_gallery[ind].save(fp=f'{name}_{ind}.jpg',format='JPEG')
+    
+    #To take you back to load.
+    os.chdir(current_path)
 
 
 
