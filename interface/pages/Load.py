@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 from PIL import Image
+import os
 
 st.set_page_config(
     page_title="Load",
@@ -69,11 +70,33 @@ st.session_state.stop = True
 st.info(f"{len(st.session_state.gallery)} Pictures Taken!")
 #Get the pictures and upload send them to data set
 image_gallery = st.session_state.gallery
-
-
-#NOTE: I will import this state in my api and then use it to create a folder once the person is done uploading images.   
+  
 done = st.session_state.stop
+
+#=========FOLDER CREATION======
+if done:
+    #make new path
+    dataset = "../../dataset"
+    new_path = os.path.join(dataset,name)
+    #BUG: to fix \\
+    new_path = r'{new_path}'
+    #make the new directory
+    if not os.path.exists(new_path):
+        os.mkdir(new_path)
     
+    #navigate to the new path
+    os.chdir(new_path)
+    
+        #populate the new directory with images
+    for ind in range(len(image_gallery)):
+        image_gallery[ind].save(fp=f'{name}_{ind}.jpg',format='JPEG')
+
+
+
+
+
+
+
 #============IF USEFULL=================
 
 #NOTE: To display the taken picture.
