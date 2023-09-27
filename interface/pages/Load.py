@@ -65,6 +65,7 @@ while( (not st.session_state.stop) and (len(st.session_state.gallery) < number_o
 st.session_state.stop = True 
 
 st.info(f"{len(st.session_state.gallery)} Pictures Taken!")
+
 #Get the pictures and upload send them to data set
 image_gallery = st.session_state.gallery
   
