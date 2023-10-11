@@ -1,3 +1,5 @@
+#NOTE: Works but is incredibly slow
+
 from deepface import DeepFace
 import numpy as np
 import cv2

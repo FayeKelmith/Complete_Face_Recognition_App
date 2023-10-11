@@ -1,3 +1,4 @@
+#NOTE: Step towards extracting images then feeding them into the Yolo finetuned model
 from retinaface import RetinaFace
 import matplotlib.pyplot as plt
 resp = RetinaFace.extract_faces("../model/data_images/faye_reddy/faye_reddy_8.jpg", align= False)
